@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Firebase Web Quickstart</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+  <script src="https://code.angularjs.org/1.2.6/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.2.6/angular-route.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-messaging.js"></script>
+
+  <!-- Leave out Storage -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-storage.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAYlsPsUz-jBTxhxiDFdG5L_m6zWSR66IY",
+      authDomain: "webposts-17df1.firebaseapp.com",
+      databaseURL: "https://webposts-17df1.firebaseio.com",
+      storageBucket: "webposts-17df1.appspot.com",
+      messagingSenderId: "740002843071"
+    };
+    firebase.initializeApp(config);
+
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('text');
+    dbRef.on('value', snap => bigone.innerText = snap.val());
+
+  // Initialize the default app
+  var defaultApp = firebase.initializeApp(defaultAppConfig);
+
+  console.log(defaultApp.name);  // "[DEFAULT]"
+
+  // You can retrieve services via the defaultApp variable...
+  var defaultStorage = defaultApp.storage();
+  var defaultDatabase = defaultApp.database();
+  </script>
+</head>
+<body>
+  <div class="row">
+    <div class="small-12 large-12 columns">
+      <h1 id="bigOne">Some text goes here</h1>
+    </div>
+  </div>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  
+</body>
+</html>
